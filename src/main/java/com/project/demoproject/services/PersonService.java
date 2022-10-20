@@ -1,7 +1,9 @@
 package com.project.demoproject.services;
 
 import com.project.demoproject.exceptions.ResourceNotFoundException;
+import com.project.demoproject.mapper.MapperStruct;
 import com.project.demoproject.model.Person;
+import com.project.demoproject.model.dto.v1.PersonDTO;
 import com.project.demoproject.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,29 +19,29 @@ public class PersonService {
 
     private final Logger logger = Logger.getLogger(PersonService.class.getName());
 
-    public List<Person> findAll() {
+    public List<PersonDTO> findAll() {
         logger.info("Find all persons");
-        return repository.findAll();
+        return MapperStruct.INSTANCE.toPersonDTOs(repository.findAll());
     }
 
-    public Person findById(Long id) {
+    public PersonDTO findById(Long id) {
         logger.info("Findind one person");
-        return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
+        return MapperStruct.INSTANCE.toPersoDTO(repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID")));
     }
 
-    public Person create(Person person) {
+    public Person create(PersonDTO personDTO) {
         logger.info("Creating a new person");
-        return repository.save(person);
+        return repository.save(MapperStruct.INSTANCE.toPerson(personDTO));
     }
 
 
-    public Person update(Person person) {
+    public Person update(PersonDTO personDTO) {
         logger.info("Update person");
-        Person entity = repository.findById(person.getId()).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
-        entity.setFirstName(person.getFirstName());
-        entity.setLastName(person.getLastName());
-        entity.setAddress(person.getAddress());
-        entity.setGender(person.getGender());
+        Person entity = repository.findById(personDTO.getId()).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
+        entity.setFirstName(personDTO.getFirstName());
+        entity.setLastName(personDTO.getLastName());
+        entity.setAddress(personDTO.getAddress());
+        entity.setGender(personDTO.getGender());
         return repository.save(entity);
     }
 

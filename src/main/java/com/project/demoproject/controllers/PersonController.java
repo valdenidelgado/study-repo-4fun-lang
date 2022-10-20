@@ -1,6 +1,7 @@
 package com.project.demoproject.controllers;
 
 import com.project.demoproject.model.Person;
+import com.project.demoproject.model.dto.v1.PersonDTO;
 import com.project.demoproject.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -17,23 +18,23 @@ public class PersonController {
     private PersonService service;
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person findById(@PathVariable(value = "id") Long id) {
+    public PersonDTO findById(@PathVariable(value = "id") Long id) {
         return service.findById(id);
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Person> findAll() {
+    public List<PersonDTO> findAll() {
         return service.findAll();
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Person create(@RequestBody Person person) {
-        return service.create(person);
+    public Person create(@RequestBody PersonDTO personDTO) {
+        return service.create(personDTO);
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Person update(@RequestBody Person person) {
-        return service.update(person);
+    public Person update(@RequestBody PersonDTO personDTO) {
+        return service.update(personDTO);
     }
 
     @DeleteMapping(value = "/{id}")
