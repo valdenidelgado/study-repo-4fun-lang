@@ -26,23 +26,24 @@ public class PersonService {
 
     public PersonDTO findById(Long id) {
         logger.info("Findind one person");
-        return MapperStruct.INSTANCE.toPersoDTO(repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID")));
+        return MapperStruct.INSTANCE.toPersonDTO(repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID")));
     }
 
-    public Person create(PersonDTO personDTO) {
+    public PersonDTO create(PersonDTO personDTO) {
         logger.info("Creating a new person");
-        return repository.save(MapperStruct.INSTANCE.toPerson(personDTO));
+        Person save =  repository.save(MapperStruct.INSTANCE.toPerson(personDTO));
+        return MapperStruct.INSTANCE.toPersonDTO(save);
     }
 
 
-    public Person update(PersonDTO personDTO) {
+    public PersonDTO update(PersonDTO personDTO) {
         logger.info("Update person");
         Person entity = repository.findById(personDTO.getId()).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
         entity.setFirstName(personDTO.getFirstName());
         entity.setLastName(personDTO.getLastName());
         entity.setAddress(personDTO.getAddress());
         entity.setGender(personDTO.getGender());
-        return repository.save(entity);
+        return MapperStruct.INSTANCE.toPersonDTO(repository.save(entity));
     }
 
     public void delete(Long id) {
