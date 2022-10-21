@@ -35,7 +35,6 @@ public class PersonService {
         return MapperStruct.INSTANCE.toPersonDTO(save);
     }
 
-
     public PersonDTO update(PersonDTO personDTO) {
         logger.info("Update person");
         Person entity = repository.findById(personDTO.getId()).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));

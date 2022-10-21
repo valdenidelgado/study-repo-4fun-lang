@@ -1,6 +1,5 @@
 package com.project.demoproject.controllers;
 
-import com.project.demoproject.model.Person;
 import com.project.demoproject.model.dto.v1.PersonDTO;
 import com.project.demoproject.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/api/person/v1")
 public class PersonController {
 
     @Autowired
