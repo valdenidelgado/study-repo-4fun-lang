@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/person/v1")
 @Tag(name = "People", description = "Endpoints for managing Person")
@@ -23,6 +24,7 @@ public class PersonController {
     @Autowired
     private PersonService service;
 
+    // @CrossOrigin(origins = "http://localhost:8080") // define the origin of the request
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Find a person by id", description = "Find a person by id", tags = {"People"},
     responses = {
