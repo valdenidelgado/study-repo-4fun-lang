@@ -1,6 +1,8 @@
 package com.project.demoproject.mapper;
 
+import com.project.demoproject.model.Book;
 import com.project.demoproject.model.Person;
+import com.project.demoproject.model.dto.v1.BookDTO;
 import com.project.demoproject.model.dto.v1.PersonDTO;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -22,4 +24,13 @@ public interface MapperStruct {
     @Mapping(target = "id", source = "key")
     @InheritInverseConfiguration
     Person toPerson(PersonDTO personDTO);
+
+    @Mapping(target = "key", source = "id")
+    BookDTO toBookDTO(Book book);
+
+    List<BookDTO> toBookDTOs(List<Book> books);
+
+    @Mapping(target = "id", source = "key")
+    @InheritInverseConfiguration
+    Book toBook(BookDTO bookDTO);
 }

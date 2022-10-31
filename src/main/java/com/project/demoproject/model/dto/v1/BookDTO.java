@@ -1,41 +1,32 @@
-package com.project.demoproject.model;
+package com.project.demoproject.model.dto.v1;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-@Entity
-@Table(name = "books")
-public class Book implements Serializable {
+@JsonPropertyOrder({"id", "author", "launchDate", "price", "title"})
+public class BookDTO extends RepresentationModel<BookDTO> implements Serializable {
     public static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "author", nullable = false, length = 180)
+    @JsonProperty("id")
+    private Long key;
     private String author;
-
-    @Column(name = "launch_date", nullable = false)
-    @Temporal(TemporalType.DATE)
     private Date launchDate;
-
-    @Column(nullable = false)
     private Double price;
-
-    @Column(nullable = false, length = 200)
     private String title;
 
-    public Book() {}
+    public BookDTO() {}
 
-    public Long getId() {
-        return id;
+    public Long getKey() {
+        return key;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setKey(Long key) {
+        this.key = key;
     }
 
     public String getAuthor() {
@@ -74,12 +65,13 @@ public class Book implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return Objects.equals(id, book.id);
+        if (!super.equals(o)) return false;
+        BookDTO bookDTO = (BookDTO) o;
+        return Objects.equals(key, bookDTO.key);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(super.hashCode(), key);
     }
 }
