@@ -1,8 +1,7 @@
-package main
+package day01
 
 import ("fmt")
 
-type tipo int
 var x tipo
 var y int
 

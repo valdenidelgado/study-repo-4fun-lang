@@ -1,8 +1,11 @@
-package main
+package day01
 
-import ("fmt")
+import (
+	"fmt"
+)
 
 type tipo int
+
 var x tipo
 
 func main() {
