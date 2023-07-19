@@ -9,7 +9,7 @@ import (
 	"github.com/valdenidelgado/study-repo-4fun-lang/golang/Golang/fc-intensivo/internal/usecase"
 )
 
-func main()  {
+func main() {
 	db, err := sql.Open("sqlite3", "db.sqlite3")
 	if err != nil {
 		panic(err)
@@ -17,7 +17,7 @@ func main()  {
 	defer db.Close()
 	orderRepository := database.NewOrderRepository(db)
 	uc := usecase.NewCalculateFinalPrice(orderRepository)
-	
+
 	input := usecase.OrderInput{
 		ID:    "12234",
 		Price: 100,
