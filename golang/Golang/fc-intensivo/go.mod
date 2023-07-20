@@ -3,7 +3,9 @@ module github.com/valdenidelgado/study-repo-4fun-lang/golang/Golang/fc-intensivo
 go 1.20
 
 require (
+	github.com/go-chi/chi/v5 v5.0.10
 	github.com/mattn/go-sqlite3 v1.14.17
+	github.com/rabbitmq/amqp091-go v1.8.1
 	github.com/stretchr/testify v1.8.4
 )
 
