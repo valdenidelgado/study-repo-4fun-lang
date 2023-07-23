@@ -2,7 +2,7 @@ package day01
 
 import ("fmt")
 
-var x tipo
+var x int
 var y int
 
 func main() {

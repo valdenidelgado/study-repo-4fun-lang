@@ -4,13 +4,12 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/valdenidelgado/study-repo-4fun-lang/golang/Golang/fc-intensivo/internal/entity"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-
+	"github.com/valdenidelgado/study-repo-4fun-lang/golang/Golang/fc-intensivo/internal/entity"
 )
 
-func main()  {
+func main() {
 	// chi router
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
