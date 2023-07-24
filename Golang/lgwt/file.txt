@@ -1,0 +1,2 @@
+go get -u github.com/go-delve/delve/cmd/dlv
+go get -u github.com/golangci/golangg
