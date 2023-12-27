@@ -2,10 +2,13 @@ package main
 
 import "fmt"
 
-func main(){
-	var employeeNumber int; fmt.Scanln(&employeeNumber)
-	var hours int; fmt.Scanln(&hours)
-	var salaryPerHour float32; fmt.Scanln(&salaryPerHour)
+func main() {
+	var employeeNumber int
+	fmt.Scanln(&employeeNumber)
+	var hours int
+	fmt.Scanln(&hours)
+	var salaryPerHour float32
+	fmt.Scanln(&salaryPerHour)
 
 	salary := float32(hours) * salaryPerHour
 

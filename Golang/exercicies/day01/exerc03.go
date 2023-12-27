@@ -1,6 +1,8 @@
 package day01
 
-import ("fmt")
+import (
+	"fmt"
+)
 
 var x int = 42
 var y string = "James Bond"

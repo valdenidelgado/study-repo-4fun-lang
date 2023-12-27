@@ -2,7 +2,7 @@ package day01
 
 import ("fmt")
 
-var x int
+var x int 
 var y string
 var z bool
 
